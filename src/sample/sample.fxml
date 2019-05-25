@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ToolBar BorderPane.alignment="CENTER">
         <items>
-            <TextField fx:id="addressBar" prefHeight="31.0" prefWidth="732.0" />
+            <Button fx:id="back" mnemonicParsing="false" onAction="#goBack" text="&lt;" />
+            <Button fx:id="foward" mnemonicParsing="false" onAction="#goFoward" text="&gt;" />
+            <Button fx:id="reloadButton" mnemonicParsing="false" onAction="#reset" text="⟳" />
+            <TextField fx:id="addressBar" onKeyPressed="#enter" prefHeight="31.0" prefWidth="600.0" />
           <Button mnemonicParsing="false" onAction="#go" text="GO" />
+            <Button fx:id="zoomMinus" mnemonicParsing="false" onAction="#unZoom" prefHeight="31.0" prefWidth="42.0" text="-" />
+            <Button fx:id="zoomPlus" mnemonicParsing="false" onAction="#zoom" prefHeight="31.0" prefWidth="42.0" text="+" />
         </items>
       </ToolBar>
    </top>
