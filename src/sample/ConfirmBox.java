@@ -23,7 +23,7 @@ public class ConfirmBox {
         window.setTitle(title);
         window.setMinHeight(200);
         window.setMinWidth(350);
-        window.getIcons().add(new Image("sample/Red_X_Symbol.png"));
+        window.getIcons().add(new Image("sample/icon.png"));
 
         Label label = new Label();
         label.setText(message);

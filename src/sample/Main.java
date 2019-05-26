@@ -26,7 +26,7 @@ public class Main extends Application {
         primaryStage.setTitle("Swift Surfer");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         primaryStage.setScene(new Scene(root, screenSize.getWidth()/4, (screenSize.getHeight()/2)));
-        primaryStage.getIcons().add(new Image("sample/Red_X_Symbol.png"));
+        primaryStage.getIcons().add(new Image("sample/icon.png"));
 
         primaryStage.setOnCloseRequest(e -> {
             e.consume();
