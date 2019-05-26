@@ -103,6 +103,7 @@ public class Controller implements Initializable {
         web.setZoom(currentZoom += 0.25);
     }
 
+
     @FXML
     public void unZoom(ActionEvent event) {
         web.setZoom(currentZoom -= 0.25);
