@@ -10,11 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
-public class ConfirmBox {
+class ConfirmBox {
 
-    static boolean answer;
+    private static boolean answer;
 
-    public static boolean display(String title, String message) {
+    static boolean display(String title, String message) {
 
 
         Stage window = new Stage();

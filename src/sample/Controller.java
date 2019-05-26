@@ -11,7 +11,6 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 import org.controlsfx.control.textfield.TextFields;
-import javafx.scene.image.Image;
 
 import java.net.URL;
 import java.util.*;
@@ -61,12 +60,13 @@ public class Controller implements Initializable {
 
     private void load() {
         addressLink = addressBar.getText();
-        //addressLink = addressLink.toLowerCase();
+
         if (addressLink.contains(httpLink)) {
             engine.load(addressLink);
         } else {
             engine.load(httpLink + addressLink);
         }
+
         save(engine.getLocation());
     }
 
@@ -83,7 +83,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void goFoward() {
+    public void goForward() {
         WebHistory history = web.getEngine().getHistory();
         try {
             history.go(1);
