@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("");
+        primaryStage.setTitle("Application");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         primaryStage.setScene(new Scene(root, screenSize.getWidth()/2, (screenSize.getHeight()-80)/2));
         primaryStage.show();

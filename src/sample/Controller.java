@@ -1,22 +1,26 @@
 package sample;
 
-import javafx.collections.ObservableList;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class Controller implements Initializable {
 
-    private String httpLink = "http://";
+    private String httpLink = "https://";
 
     private String addressLink;
 
@@ -24,13 +28,24 @@ public class Controller implements Initializable {
 
     private double currentZoom = 1;
 
-    private String lastSearch = "google.com";
-
     @FXML
     TextField addressBar;
 
     @FXML
+    BorderPane root;
+
+    @FXML
     WebView web;
+
+    @FXML
+    public void selectText() {
+        addressBar.selectAll();
+//        addressBar.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+//            if (isNowFocused) {
+//                addressBar.selectAll();
+//            }
+//        });
+    }
 
     @FXML
     public void enter(KeyEvent key) {
@@ -46,27 +61,21 @@ public class Controller implements Initializable {
 
     private void load() {
         addressLink = addressBar.getText();
-
         addressLink = addressLink.toLowerCase();
-
-        if (checkCom("google") || checkCom("youtube") || checkCom("amazon")
-                || checkCom("stackoverflow") || checkCom("github")) {
-            addressLink += ".com";
-            engine.load(httpLink + addressLink);
+        if (addressLink.contains(httpLink)) {
+            engine.load(addressLink);
         } else {
             engine.load(httpLink + addressLink);
         }
-
-        lastSearch = httpLink + addressLink;
-    }
-
-    private boolean checkCom(String s) {
-        return addressLink.equals(s);
+        addressBar.clear();
+        addressBar.setText(engine.getLocation());
     }
 
     @FXML
     public void reset() {
         engine.reload();
+        addressBar.clear();
+        addressBar.setText(engine.getLocation());
     }
 
     @FXML
@@ -74,8 +83,9 @@ public class Controller implements Initializable {
         WebHistory history = web.getEngine().getHistory();
         try {
             history.go(1);
-        } catch (Exception e) {
-        }
+            addressBar.clear();
+            addressBar.setText(engine.getLocation());
+        } catch (Exception ignored) {}
     }
 
     @FXML
@@ -83,8 +93,9 @@ public class Controller implements Initializable {
         WebHistory history = web.getEngine().getHistory();
         try {
             history.go(-1);
-        } catch (Exception e) {
-        }
+            addressBar.clear();
+            addressBar.setText(engine.getLocation());
+        } catch (Exception ignored) {}
     }
 
     @FXML
@@ -99,8 +110,21 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.setImplicitExit(false);
         engine = web.getEngine();
         web.setZoom(currentZoom);
         engine.load(httpLink + "interbb.blackboard.com/webapps/login/");
+        addressBar.setText(engine.getLocation());
+
+        possibleWord.addAll(Arrays.asList(presetWords));
+
+        TextFields.bindAutoCompletion(addressBar, possibleWord);
     }
+
+    private String[] presetWords = {
+            "ebay.com", "youtube.com", "amazon.com", "athleanonline.com/auth/login",
+            "github.com", "stackoverflow.com"
+    };
+
+    private LinkedList<String> possibleWord = new LinkedList<>();
 }
