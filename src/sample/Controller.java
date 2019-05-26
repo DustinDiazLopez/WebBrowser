@@ -13,10 +13,7 @@ import javafx.scene.web.WebView;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
 
 public class Controller implements Initializable {
 
@@ -37,14 +34,16 @@ public class Controller implements Initializable {
     @FXML
     WebView web;
 
+    private String[] presetWords = {
+            "ebay.com", "youtube.com", "amazon.com", "athleanonline.com/auth/login",
+            "github.com", "stackoverflow.com"
+    };
+
+    private LinkedList<String> possibleWord = new LinkedList<>();
+
     @FXML
     public void selectText() {
         addressBar.selectAll();
-//        addressBar.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
-//            if (isNowFocused) {
-//                addressBar.selectAll();
-//            }
-//        });
     }
 
     @FXML
@@ -61,7 +60,7 @@ public class Controller implements Initializable {
 
     private void load() {
         addressLink = addressBar.getText();
-        addressLink = addressLink.toLowerCase();
+        //addressLink = addressLink.toLowerCase();
         if (addressLink.contains(httpLink)) {
             engine.load(addressLink);
         } else {
@@ -69,6 +68,7 @@ public class Controller implements Initializable {
         }
         addressBar.clear();
         addressBar.setText(engine.getLocation());
+        System.out.println(engine.getHistory().toString());
     }
 
     @FXML
@@ -121,11 +121,4 @@ public class Controller implements Initializable {
 
         TextFields.bindAutoCompletion(addressBar, possibleWord);
     }
-
-    private String[] presetWords = {
-            "ebay.com", "youtube.com", "amazon.com", "athleanonline.com/auth/login",
-            "github.com", "stackoverflow.com"
-    };
-
-    private LinkedList<String> possibleWord = new LinkedList<>();
 }
