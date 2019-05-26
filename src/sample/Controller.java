@@ -11,6 +11,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 import org.controlsfx.control.textfield.TextFields;
+import javafx.scene.image.Image;
 
 import java.net.URL;
 import java.util.*;
@@ -23,7 +24,7 @@ public class Controller implements Initializable {
 
     private WebEngine engine;
 
-    private double currentZoom = 1;
+    private double currentZoom = 1.25;
 
     @FXML
     TextField addressBar;
@@ -66,16 +67,19 @@ public class Controller implements Initializable {
         } else {
             engine.load(httpLink + addressLink);
         }
+        save(engine.getLocation());
+    }
+
+    private void save(String s) {
         addressBar.clear();
-        addressBar.setText(engine.getLocation());
-        System.out.println(engine.getHistory().toString());
+        addressBar.setText(s);
+        possibleWord.add(s);
     }
 
     @FXML
     public void reset() {
         engine.reload();
-        addressBar.clear();
-        addressBar.setText(engine.getLocation());
+        save(engine.getLocation());
     }
 
     @FXML
