@@ -23,11 +23,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Swift Surfer");
+        primaryStage.setTitle("S.S. Surfer");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        primaryStage.setScene(new Scene(root, screenSize.getWidth()/4, (screenSize.getHeight()/2)));
+        primaryStage.setScene(new Scene(root, screenSize.getWidth()/2.2, (screenSize.getHeight()/2)));
         primaryStage.getIcons().add(new Image("sample/icon.png"));
-
+        primaryStage.setFullScreen(false);
         primaryStage.setOnCloseRequest(e -> {
             e.consume();
             closeProgram();

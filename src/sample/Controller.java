@@ -25,6 +25,8 @@ public class Controller implements Initializable {
 
     private double currentZoom = 1.25;
 
+    private String home;
+
     @FXML
     TextField addressBar;
 
@@ -33,6 +35,14 @@ public class Controller implements Initializable {
 
     @FXML
     WebView web;
+
+    private void setHome(String home) {
+        if (home.contains(httpLink)) {
+            this.home = home;
+        } else {
+            this.home = httpLink + home;
+        }
+    }
 
     private String[] presetWords = {
             "ebay.com", "youtube.com", "amazon.com", "athleanonline.com/auth/login",
@@ -118,7 +128,9 @@ public class Controller implements Initializable {
         Platform.setImplicitExit(false);
         engine = web.getEngine();
         web.setZoom(currentZoom);
-        engine.load(httpLink + "interbb.blackboard.com/webapps/login/");
+        setHome("https://interbb.blackboard.com/webapps/login/");
+
+        engine.load(home);
         addressBar.setText(engine.getLocation());
 
         possibleWord.addAll(Arrays.asList(presetWords));

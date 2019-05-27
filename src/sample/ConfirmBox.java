@@ -31,9 +31,23 @@ class ConfirmBox {
         Button yesButton = new Button("Yes");
         Button noButton  = new Button("No");
 
+        yesButton.setOnKeyPressed(e -> {
+            if (e.getCode().toString().equals("ENTER")) {
+                answer = true;
+                window.close();
+            }
+        });
+
         yesButton.setOnAction(e -> {
             answer = true;
             window.close();
+        });
+
+        noButton.setOnKeyPressed(e -> {
+            if (e.getCode().toString().equals("ENTER")) {
+                answer = false;
+                window.close();
+            }
         });
 
         noButton.setOnAction(e -> {
