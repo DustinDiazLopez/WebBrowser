@@ -219,11 +219,11 @@
       <recent name="C:\Users\dudia\Desktop\WebBrowser\src\calculator" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dustin\Desktop\WebBrowser\src\sample" />
       <recent name="C:\Users\dudia\Desktop\WebBrowser\src\sample" />
       <recent name="C:\Users\dudia\Desktop\WebBrowser\src" />
       <recent name="C:\Users\dudia\Desktop\WebBrowser\src\controlfx" />
       <recent name="C:\Users\dudia\Desktop\WebBrowser\src\controlsfx" />
-      <recent name="C:\Users\dudia\Desktop\WebBrowser\src\idk" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -409,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558884193021</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added enter functionality to confirmation box and icon change">
+      <created>1558951886571</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1558951886571</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -462,7 +469,8 @@
     <MESSAGE value="Icon and confirm box" />
     <MESSAGE value="Icon name change" />
     <MESSAGE value="lib" />
-    <option name="LAST_COMMIT_MESSAGE" value="lib" />
+    <MESSAGE value="Added enter functionality to confirmation box and icon change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added enter functionality to confirmation box and icon change" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
