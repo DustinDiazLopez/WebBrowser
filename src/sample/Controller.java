@@ -46,7 +46,7 @@ public class Controller implements Initializable {
 
     private String[] presetWords = {
             "ebay.com", "youtube.com", "amazon.com", "athleanonline.com/auth/login",
-            "github.com", "stackoverflow.com"
+            "github.com", "stackoverflow.com", "google.com"
     };
 
     private LinkedList<String> possibleWord = new LinkedList<>();
