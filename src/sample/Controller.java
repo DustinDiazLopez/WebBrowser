@@ -64,7 +64,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void go(ActionEvent actionEvent) {
+    public void go() {
         load();
     }
 
@@ -113,18 +113,19 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void zoom(ActionEvent event) {
+    public void zoom() {
         web.setZoom(currentZoom += 0.25);
     }
 
 
     @FXML
-    public void unZoom(ActionEvent event) {
+    public void unZoom() {
         web.setZoom(currentZoom -= 0.25);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        addressBar.setOnKeyPressed(e -> {if (e.getCode().toString().equals("ENTER")) load();});
         Platform.setImplicitExit(false);
         engine = web.getEngine();
         web.setZoom(currentZoom);
