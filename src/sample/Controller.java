@@ -46,7 +46,7 @@ public class Controller implements Initializable {
 
     private String[] presetWords = {
             "ebay.com", "youtube.com", "amazon.com", "athleanonline.com/auth/login",
-            "github.com", "stackoverflow.com", "google.com"
+            "github.com", "stackoverflow.com", "google.com", "https://10.0.0.85:8080/"
     };
 
     private LinkedList<String> possibleWord = new LinkedList<>();
@@ -130,6 +130,7 @@ public class Controller implements Initializable {
         engine = web.getEngine();
         web.setZoom(currentZoom);
         setHome("https://interbb.blackboard.com/webapps/login/");
+        //setHome("https://10.0.0.85:8080/");
 
         engine.load(home);
         addressBar.setText(engine.getLocation());
