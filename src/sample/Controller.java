@@ -130,7 +130,6 @@ public class Controller implements Initializable {
         engine = web.getEngine();
         web.setZoom(currentZoom);
         setHome("https://interbb.blackboard.com/webapps/login/");
-        //setHome("https://10.0.0.85:8080/");
 
         engine.load(home);
         addressBar.setText(engine.getLocation());
